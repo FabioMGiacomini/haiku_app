@@ -15,7 +15,7 @@ app.get("/", (req, res) =>
 app.get("/haiku", async (req, res) => {
   const authHeaders = req.headers;
 
-  if (authHeaders.secretkey !== "superChiaveSegreta") {
+  if (authHeaders.secretkey !== process.env.ZUPLO_SECRET_KEY) {
     res.json({ Attenzione: "non sei autorizzato a fare questa richiesta" });
     return;
   }
